@@ -14,4 +14,9 @@ class SiteController extends Controller
         return view('scroll');
     }
 
+    public function gallery01()
+    {
+        return view('gallery01');
+    }
+
 }
