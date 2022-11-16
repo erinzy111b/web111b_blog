@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Grid zoom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="gallery01./style.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="gallery_z./style.css">
 
 </head>
 <body>
@@ -33,7 +33,7 @@ https://twitter.com/marco_bf
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script><script  src="{{asset('gallery01/script.js')}}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js'></script><script  src="{{asset('gallery_z/script.js')}}"></script>
 
 </body>
 </html>
