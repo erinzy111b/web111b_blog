@@ -19,13 +19,4 @@ class SiteController extends Controller
         return view('gallery01');
     }
 
-    public function scroll02()
-    {
-        return view('scroll02');
-    }
-
-    public function room()
-    {
-        return view('room');
-    }
 }

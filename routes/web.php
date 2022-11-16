@@ -29,9 +29,6 @@ return "posts $post , comments $comment";
 Route::namespace ('App\Http\Controllers')->group(function () {
     Route::get('/hello', 'SiteController@hello');
     Route::get('/users/{id?}', 'UserController@show');
-    Route::get('/qwq', 'SiteController@scroll');
+    Route::get('/admin', 'SiteController@scroll');
     Route::get('/qaq', 'SiteController@gallery01');
-    Route::get('/qoq', 'SiteController@scroll02');
-    Route::get('/quq', 'SiteController@room');
-
 });
