@@ -27,7 +27,7 @@ class SiteController extends Controller
 
     public function testgallery()
     {
-        //增加
+        //增加圖片連結路徑在這
         return view('googoodgod.son');
     }
 
