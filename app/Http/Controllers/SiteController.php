@@ -14,9 +14,21 @@ class SiteController extends Controller
         return view('scroll');
     }
 
-    public function gallery01()
+    public function gallery()
     {
-        return view('gallery01');
+        return view('gallery');
+    }
+
+    public function test()
+    {
+        $name = 'TEST';
+        return view('test._test', compact('name'));
+    }
+
+    public function testgallery()
+    {
+        //增加
+        return view('googoodgod.son');
     }
 
 }

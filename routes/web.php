@@ -30,5 +30,8 @@ Route::namespace ('App\Http\Controllers')->group(function () {
     Route::get('/hello', 'SiteController@hello');
     Route::get('/users/{id?}', 'UserController@show');
     Route::get('/admin', 'SiteController@scroll');
-    Route::get('/qaq', 'SiteController@gallery01');
+    Route::get('/qaq', 'SiteController@gallery');
+    Route::get('/qwq', 'SiteController@testgallery');
+    Route::get('/quq', 'SiteController@');
+    Route::get('/qxq', 'SiteController@test');
 });
