@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // view()->composer(['menu.menu_son', 'menu.menu'], function ($view) {
+        //     $view->with('menu', Task::all());
+        // });
+
+        // view()->share('', '');
     }
 }

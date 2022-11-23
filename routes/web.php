@@ -32,6 +32,6 @@ Route::namespace ('App\Http\Controllers')->group(function () {
     Route::get('/admin', 'SiteController@scroll');
     Route::get('/qaq', 'SiteController@gallery');
     Route::get('/qwq', 'SiteController@testgallery');
-    Route::get('/quq', 'SiteController@');
+    Route::get('/quq', 'SiteController@menu');
     Route::get('/qxq', 'SiteController@test');
 });

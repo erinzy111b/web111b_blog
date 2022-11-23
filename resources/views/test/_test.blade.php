@@ -6,9 +6,9 @@ Save him/her? &emsp;
 <br>
 <html>
   <form actuon="test_back.blade.php" method="get">
-→ Of course <input type="submit" value="Yes"> &nbsp;
+→ Of course <input type="submit" value="Yes"> &nbsp;<br>
 <br>
-→ <input type="submit" value="No"> and Never
+→ <input type="submit" value="No"> :(
 
   </form>
 </html>

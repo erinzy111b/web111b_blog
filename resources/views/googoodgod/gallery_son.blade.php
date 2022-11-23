@@ -27,9 +27,9 @@
 @endsection
 
 @section('url')
-"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/800px-Windows_Settings_app_icon.png"
+"http://localhost:6080/blog/public/qxq"
 @endsection
 
 @section('icon')
-"https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg"
+"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Windows_Settings_app_icon.png/800px-Windows_Settings_app_icon.png"
 @endsection
