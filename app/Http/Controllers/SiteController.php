@@ -36,4 +36,19 @@ class SiteController extends Controller
         return view('miniblog.menu_son');
     }
 
+    public function login_()
+    {
+        return view('miniblog.login');
+    }
+
+    public function p1()
+    {
+        return view('miniblog.page.p01');
+    }
+
+    // public function aaaa(Request $request)
+    // {
+    //     $input = $request->all();
+    // }
+
 }

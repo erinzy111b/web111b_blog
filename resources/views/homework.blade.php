@@ -1,23 +1,3 @@
-<html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</html>
-
-
-
-
-
 {{--
 •☐嘗試自己做出電子商務首頁的blade視圖 , 並從Controller回傳
 •☐優化自己的blade , 把重複部分分離成master.blade.php , 以繼承的方式改寫

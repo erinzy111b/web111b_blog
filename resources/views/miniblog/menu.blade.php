@@ -22,13 +22,13 @@
   <section class="top-bar-section">
     <ul class="right">
       <li class="divider"></li>
-      <li><a href="#">Code</a></li>
+      <li><a href="#">@yield('topright01','topright01')</a></li>
       <li class="divider"></li>
-      <li><a href="#">Design</a></li>
+      <li><a href="#">@yield('topright02','topright02')</a></li>
       <li class="divider"></li>
-      <li><a href="#">Education</a></li>
+      <li><a href="#">@yield('topright03','topright03')</a></li>
       <li class="divider"></li>
-      <li><a href="#">Life</a></li>
+      <li><a href="#">@yield('topright04','topright04')</a></li>
       <li class="divider"></li>
     </ul>
   </section>
@@ -40,8 +40,8 @@
   <div class="row">
     <div class="large-12 columns">
       <hgroup>
-        <h1>@yield('BigTitle')</h1>
-        <h3>@yield('SaySomething')</h3>
+        <h1>@yield('BigTitle','BigTitle')</h1>
+        <h3>@yield('SaySomething','SaySomething')</h3>
       </hgroup>
 
 
@@ -49,13 +49,13 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="#">@yield('card1name')</a>
+            <a href="#">@yield('card1name','cardname')</a>
             <i class="fa fa-code card-icon "></i>
           </div>
           <div class="panel card-back">
             <i class="fa fa-code card-icon"></i>
             <div class="hub-info">
-              <a href="#">JKLCode.com</a>
+              <a href="p1">JKLCode.com</a>
               <p>Find coding gists, cheatsheets, plugins, themes, resources, and tutorials.</p>
             </div>
             <small class="clear">Updated TTH.</small>
@@ -64,7 +64,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="http://www.aaronsnowberger.com">Design</a>
+            <a href="http://www.aaronsnowberger.com">測試二</a>
             <i class="fa fa-pencil-square-o card-icon"></i>
           </div>
 
@@ -80,7 +80,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="">Education</a>
+            <a href="">測試三</a>
             <i class="fa fa-paper-plane-o card-icon"></i>
           </div>
 
@@ -96,7 +96,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="">Life</a>
+            <a href="">測試四</a>
             <i class="fa fa-map-o card-icon"></i>
           </div>
 
@@ -112,7 +112,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="#">Language</a>
+            <a href="#">測試五</a>
             <i class="fa fa-language card-icon"></i>
           </div>
 
@@ -128,7 +128,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a href="http://www.aicfchurch.org">Church</a>
+            <a href="http://www.aicfchurch.org">測試六</a>
             <i class="fa fa-users card-icon"></i>
           </div>
 

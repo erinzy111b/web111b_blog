@@ -1,4 +1,4 @@
-@extends('menu.menu')
+@extends('miniblog.menu')
 
 
 {{-- 上半部 --}}
@@ -12,7 +12,7 @@
 
 
 {{-- 中間 --}}
-@section('card1name','測試A')
+@section('card1name','測試一')
 
 
 {{-- 中間 --}}
