@@ -40,7 +40,7 @@ Route::namespace ('App\Http\Controllers')->group(function () {
     // Route::get('AA', 'SiteController@p1');
     // Route::get('post_', 'SiteController@p1');
     Route::resource('posts', 'PostController');
-    Route::resource();
+    Route::resource('articles', 'ArticleController');
 
 });
 
