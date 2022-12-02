@@ -35,19 +35,34 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+        //  //取得所有前台傳入的資料
+        // $data['options'] = implode(',', $data['options']);
+
+        $data = $request->all();
+        //1.以data取得所有資料
         if ($request->hasFile('pic')) {
-            $file = $request->file('pic'); //獲取UploadFile例項
-            if ($file->isValid()) { //判斷檔案是否有效
-                //$filename = $file->getClientOriginalName(); //檔案原名稱
-                $extension = $file->getClientOriginalExtension(); //副檔名
-                $filename = time() . "." . $extension; //重新命名
-                // $data['pic'] = $filename;
+            $file = $request->file('pic');
+            if ($file->isValid()) {
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . "." . $extension;
+                $data['pic'] = $filename;
+                //2.特別把data中的pic抓出來定義
                 $path = $file->storeAs('public/pic', $filename); //儲存至指定目錄
+                // 在'storage\app\public\pic\'裡，還有實際存在'D:\xampp8\htdocs\web111b\blog\storage\app\public\pic\'裡
             }
         }
-        // return 'ok';
-        return $request->all();
-        return $filename;
+        // return $request->except('_token');
+
+        // $data = $request->except('_token');
+        // return $data; //取得所有前台傳入的資料
+
+        return $data;
+        //3.這就能出現完整上傳檔案的檔名
+
+//return $request->all();
+//返回到index頁面
+        return redirect(url('posts/' . 1));
+
     }
 
     /**

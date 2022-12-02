@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('cgies', function (Blueprint $table) {
             $table->id();
-            $table->string('subject',100);
-            $table->text('content');
-            $table->integer('cgy_id');
+            $table->string('subject', 100);
+            $table->string('pic', 255);
+            $table->text('desc');
             $table->boolean('enable')->default(true);
-            $table->integer('sort')->default(0);
-            $table->timestamp('enable_at');
-            $table->string('tags',200);
-            $table->string('pic',255);
+            $table->integer('sort')->default(0)->unsigned();
+            // ->unsigned()只能用在數值格, 不然會報錯
+
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('cgies');
     }
 };
