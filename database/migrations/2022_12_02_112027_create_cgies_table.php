@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('cgies', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 20)->nullable();
+            $table->string('title', 2)->nullable();
             $table->string('subject', 100)->nullable();
             $table->string('pic', 255)->nullable();
             $table->text('desc')->nullable();
             $table->boolean('enabled')->default(true)->nullable();
+            $table->timestamp('enabled_at')->nullable();
             $table->integer('sort')->default(0)->unsigned()->nullable();
             $table->timestamps();
 

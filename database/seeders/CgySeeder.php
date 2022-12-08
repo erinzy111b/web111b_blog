@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cgy;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class CgySeeder extends Seeder
@@ -15,8 +16,7 @@ class CgySeeder extends Seeder
     public function run()
     {
         Cgy::truncate(); //把所有資料清空, 並重置主鍵
-
-        Cgy::create(['title' => '分類一', 'enabled' => true]);
-
+        $faker = Factory::create('zh_TW');
+        Cgy::factory()->times(5)->create();
     }
 }

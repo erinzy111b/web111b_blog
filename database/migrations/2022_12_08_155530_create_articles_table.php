@@ -15,8 +15,15 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('subject', 100)->nullable();
+            $table->text('content')->nullable();
+            $table->integer('cgy_id')->nullable();
+            $table->boolean('enabled')->default(true)->nullable();
+            $table->integer('sort')->default(0)->nullable();
+            $table->timestamp('enabled_at')->nullable();
+            $table->string('tags', 200)->nullable();
+            $table->string('pic', 255)->nullable();
             $table->timestamps();
-
         });
     }
 

@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Article;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class ArticleSeeder extends Seeder
@@ -14,6 +15,9 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Article::truncate(); //把所有資料清空, 並重置主鍵
+        Article::factory()->times(100)->create();
+
+        // Article::factory()->times(5)->create();
     }
 }
