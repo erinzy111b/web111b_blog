@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
+        Schema::create('article_tag', function (Blueprint $table) {
+            $table->string('tag_id');
+            // bigIntegry??
+            $table->string('article_id');
             $table->timestamps();
-
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('article_tag');
     }
 };

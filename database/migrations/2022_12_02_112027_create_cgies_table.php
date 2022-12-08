@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('cgies', function (Blueprint $table) {
             $table->id();
-            $table->string('subject', 100);
-            $table->string('pic', 255);
-            $table->text('desc');
-            $table->boolean('enable')->default(true);
-            $table->integer('sort')->default(0)->unsigned();
+            $table->string('title', 20)->nullable();
+            $table->string('subject', 100)->nullable();
+            $table->string('pic', 255)->nullable();
+            $table->text('desc')->nullable();
+            $table->boolean('enabled')->default(true)->nullable();
+            $table->integer('sort')->default(0)->unsigned()->nullable();
+            $table->timestamps();
+
             // ->unsigned()只能用在數值格, 不然會報錯
 
         });
