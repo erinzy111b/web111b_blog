@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(CgySeeder::class);
         $this->call(ArticleSeeder::class);
+        // $this->call(hw_imageSeeder::class);
+        // $this->call(HwImageSeeder::class);
+        $this->call(ChildSeeder::class);
+
     }
 }

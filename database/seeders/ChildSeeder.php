@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cgy;
+use App\Models\Child;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class CgySeeder extends Seeder
+class ChildSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,10 @@ class CgySeeder extends Seeder
      */
     public function run()
     {
-        Cgy::truncate(); //把所有資料清空, 並重置主鍵
+        Child::truncate(); //把所有資料清空, 並重置主鍵
         $faker = Factory::create('zh_TW');
-        Cgy::factory()->times(100)->create();
+        Child::create([
+            'subject' => $faker->name,
+        ]);
     }
 }

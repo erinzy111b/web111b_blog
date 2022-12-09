@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Article;
+use App\Models\Cgy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +45,40 @@ Route::namespace ('App\Http\Controllers')->group(function () {
     Route::resource('articles', 'ArticleController');
 
 });
+
+Route::get('/newcgy', function () {
+    //第一種方法(這裡只是為演示邏輯進程並方便測試的範例, 實際上幾乎不可能把資料寫在這裡)
+    // $cgy = new Cgy;
+    // $cgy->title = '我的英雄學院';
+    // $cgy->desc = '我的英雄學院劇場版';
+    // $cgy->enabled = true;
+    //第二種方法(這裡只是為演示邏輯進程並方便測試的範例, 實際上幾乎不可能把資料寫在這裡)
+    $cgy = new Cgy(['title' => '我英2', 'desc' => '我英劇場版2', 'enabled' => true]);
+    //要加上儲存指示, 資料才會寫進資料庫
+    $cgy->save();
+});
+
+Route::resource('/cgies', 'App\Http\Controllers\CgyController');
+
+Route::get('/distinct', function () {
+    $data = Article::select(['id', 'subject', 'cgy_id'])->distinct('cgy_id')->get();
+    return $data;
+});
+
+Route::get('/pluck', function () {
+    $data = Article::pluck('id', 'subject');
+    return $data;
+});
+
+//第一種方法//destroy後的$id可以指定多筆 e.g.[1,5,9]
+Route::get('/delcgy/{cgy}', function ($id) {
+    $cgy = Cgy::destroy($id);
+});
+
+//第二種方法
+// Route::get('/delcgy/{cgy}', function (Cgy $cgy) {
+//     $cgy->delete();
+// });
 
 // // Route::miniblog ('App\Http\Controllers')->group(function () {
 // //     Route::get('/hello', 'SiteController@hello');

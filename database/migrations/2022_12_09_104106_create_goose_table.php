@@ -13,19 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cgies', function (Blueprint $table) {
+        Schema::create('goose', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255)->nullable();
             $table->string('subject', 100)->nullable();
-            $table->string('pic', 255)->nullable();
-            $table->text('desc')->nullable();
-            $table->boolean('enabled')->default(true)->nullable();
-            $table->timestamp('enabled_at')->nullable();
-            $table->integer('sort')->default(0)->unsigned()->nullable();
             $table->timestamps();
-
-            // ->unsigned()只能用在數值格, 不然會報錯
-
         });
     }
 
@@ -36,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cgies');
+        Schema::dropIfExists('goose');
     }
 };

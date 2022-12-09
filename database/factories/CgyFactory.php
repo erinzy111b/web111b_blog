@@ -18,9 +18,9 @@ class CgyFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->unique()->numberbetween(1, 99),
+            'title' => $this->faker->unique()->numberbetween(1, 999),
             'enabled' => $this->faker->randomElement([true, false]),
-            'enabled_at' => Carbon::now()->addDays(10),
+            'enabled_at' => Carbon::now()->addDays(rand(0, 20)),
         ];
     }
 }
