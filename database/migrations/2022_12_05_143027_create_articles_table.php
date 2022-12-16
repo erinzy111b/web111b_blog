@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('subject', 100)->nullable();
             $table->text('content')->nullable();
-            $table->integer('cgy_id')->nullable();
+            // $table->bigInteger('cgy_id')->nullable();
             $table->boolean('enabled')->default(true)->nullable();
             $table->integer('sort')->default(0)->nullable();
             $table->timestamp('enabled_at')->nullable();
             $table->string('tags', 200)->nullable();
             $table->string('pic', 255)->nullable();
+            $table->foreignId('cgy_id')->constrained();
             $table->timestamps();
         });
     }
@@ -34,6 +35,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropForeign(['cgy_id']);
+        });
         Schema::dropIfExists('articles');
     }
 };

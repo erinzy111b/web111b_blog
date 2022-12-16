@@ -75,6 +75,36 @@ Route::get('/delcgy/{cgy}', function ($id) {
     $cgy = Cgy::destroy($id);
 });
 
+// Route::get('/aaaa', function () {
+//     $aaa = Article::find(1);
+//     dd($aaa->cgy->subject);
+// });
+
+// Route::get('/relation', function () {
+//     $article = Article::find(1);
+//     dd($article->cgy->subject);
+// });
+
+// Route::namespace ('App\Http\Controllers')->prefix('articles/aaaa')->group(function () {
+//     Route::get('relaCgy/{cgy_id}', 'ArticleController@relaCgy');
+// });
+
+Route::get('/relaCgy/{cgy_id}', 'App\Http\Controllers\ArticleController@relaCgy');
+
+Route::get('/bbbb', function () {
+    // $article = Article::find(1);
+    // $article->cgy_id = 5;
+    // $cgy_4 = Cgy::find(4);
+    // $article->cgy()->associate($cgy_4);
+    // $article->save();
+    // dd($article);
+    $cgy = Cgy::find(1);
+    $article = Article::where('cgy_id', 5)->first();
+    $cgy->articles()->save($article);
+    dd(Article::find($article->id));
+
+});
+
 //第二種方法
 // Route::get('/delcgy/{cgy}', function (Cgy $cgy) {
 //     $cgy->delete();

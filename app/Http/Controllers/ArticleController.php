@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -108,5 +109,14 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function relaCgy($cgy_id)
+    {
+        $article = Article::find($cgy_id)->cgy->subject;
+        dd($article);
+
+        // return 'ok';
+
     }
 }

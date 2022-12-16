@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +33,16 @@
 // // });
 
 // Route::post('items', 'App\Http\Controllers\Api\PostController@store');
+
+// Route::middleware('auth:api')->group(function () {
+//     Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
+// });
+
+Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
+
+
+Route::group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers\Api'], function () {
+    Route::get('/', 'AuthController@me')->name('me');
+    Route::post('login', 'AuthController@login')->name('login');
+    Route::post('logout', 'AuthController@logout')->name('logout');
+});

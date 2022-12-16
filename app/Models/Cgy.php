@@ -10,4 +10,15 @@ class Cgy extends Model
     use HasFactory;
     protected $date = ['enabled_at'];
     protected $fillable = ['title', 'desc', 'enabled'];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function cgy()
+    {
+        return $this->hasOne(Cgy::class);
+    }
+
 }
