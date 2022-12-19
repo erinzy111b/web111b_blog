@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
 
+Route::apiResource('items', 'App\Http\Controllers\Api\ItemController');
 
 Route::group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('/', 'AuthController@me')->name('me');

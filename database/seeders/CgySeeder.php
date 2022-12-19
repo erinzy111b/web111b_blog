@@ -16,7 +16,7 @@ class CgySeeder extends Seeder
     public function run()
     {
         Cgy::truncate(); //把所有資料清空, 並重置主鍵
-        $faker = Factory::create('zh_TW');
-        Cgy::factory()->times(100)->create();
+        // $faker = Factory::create('zh_TW');
+        Cgy::factory()->times(10)->create();
     }
 }

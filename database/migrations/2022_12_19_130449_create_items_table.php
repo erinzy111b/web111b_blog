@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hw_images', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('image_no');
-            $table->string('image_url', 10);
+            $table->string('title', 20);
+            $table->string('pic', 255)->nullable();
+            $table->integer('price')->default(0);
+            $table->boolean('enabled')->default(true);
+            $table->text('desc');
+            $table->timestamp('enabled_at')->nullable;
+            $table->foreignId('cgy_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hw_images');
+        Schema::dropIfExists('items');
     }
 };
