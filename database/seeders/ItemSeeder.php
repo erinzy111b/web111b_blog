@@ -15,6 +15,6 @@ class ItemSeeder extends Seeder
     public function run()
     {
         Item::truncate();
-        Item::factory()->times(10)->create();
+        Item::factory()->times(20)->create();
     }
 }
