@@ -30,6 +30,7 @@ class ItemController extends Controller
     public function create()
     {
         //GET/items/create
+        //建立一筆新資料的'頁面'
         return 'create';
 
     }
@@ -71,6 +72,7 @@ class ItemController extends Controller
     public function edit($id)
     {
         //GET/items/{item}/edit
+        //編輯資料的'頁面'
         return 'edit';
     }
 
@@ -106,61 +108,61 @@ class ItemController extends Controller
     //查詢上架於 2022/12/24 00:00:00 之後，enabled 為 true 的資料，按照 enabled_at 從新到舊排序，回傳第一筆資料的 subject 欄位內容
     public function querySpecific()
     {
-
+        return 'querySpecific';
     }
 
     //查詢上架於 2022/12/24 00:00:00 之後，enabled 為 true 的資料，按照 enabled_at 從新到舊排序，回傳第2~4筆資料
     public function queryPagination()
     {
-
+        return 'queryPagination';
     }
 
     //查詢上架日期介於 2022/12/24 00:00:00 和 2022/12/28 23:59:59 之間，price 位於 $min 到 $max 之間的資料並回傳
     public function queryRange($min, $max)
     {
-
+        return 'queryRange';
     }
 
     //根據所傳入的分類id，取出該分類所有 enabled 為 true 的資料，依照 price 從小到大排序，回傳符合的資料
     public function queryByCgy($cgy_id)
     {
-
+        return 'queryByCgy';
     }
 
     //試著使用 pluck() 來取得 id 為 key ， title 為 value 的陣列
     public function queryPluck()
     {
-
+        return 'queryPluck';
     }
 
     //計算所有 enabled 為 true 的資料筆數後回傳，利用查詢方法 count()
     public function enabledCount()
     {
-
+        return 'enabledCount';
     }
 
     //取得指定分類的所有商品
     public function queryCgyRelation(Cgy $cgy)
     {
-
+        return 'queryCgyRelation';
     }
 
     //取得原分類ID為$old_cgy_id的第一個文章，將之改為新分類ID $new_cgy_id
     public function changeCgy($old_cgy_id, $new_cgy_id)
     {
-
+        return 'changeCgy';
     }
 
     //取得指定商品的所屬分類
     public function getArticleCgy(Item $article)
     {
-
+        return 'getArticleCgy';
     }
 
     //取得原分類 id 為$old_cgy_id的所有商品，將之改為新分類ID $new_cgy_id
     public function changeAllCgy($old_cgy_id, $new_cgy_id)
     {
-
+        return 'changeAllCgy';
     }
 
     // //取得指定商品的所有標籤，連同該標籤建立的時間

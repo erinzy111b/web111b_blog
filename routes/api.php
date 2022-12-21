@@ -42,7 +42,16 @@ Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
 
 Route::apiResource('items', 'App\Http\Controllers\Api\ItemController');
 Route::group(['prefix' => 'item', 'namespace' => 'App\Http\Controller\Api'], function () {
-    // Route::get('   ','ItemController@    ');
+    Route::get('querySpecific', 'ItemController@querySpecific');
+    Route::get('queryPagination', 'ItemController@queryPagination');
+    Route::get('queryRange', 'ItemController@queryRange');
+    Route::get('queryByCgy', 'ItemController@queryByCgy');
+    Route::get('queryPluck', 'ItemController@queryPluck');
+    Route::get('enabledCount', 'ItemController@enabledCount');
+    Route::get('queryCgyRelation', 'ItemController@queryCgyRelation');
+    Route::get('changeCgy', 'ItemController@changeCgy');
+    Route::get('getArticleCgy', 'ItemController@getArticleCgy');
+    Route::get('changeAllCgy', 'ItemController@changeAllCgy');
 });
 
 Route::group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers\Api'], function () {
