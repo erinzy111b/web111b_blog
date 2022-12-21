@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+
+    // https: //github.com/javck/blog_a111b
+
     /**
      * Display a listing of the resource.
      *
