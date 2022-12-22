@@ -15,14 +15,16 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * 回傳該表格的所有資料，以 sort 欄位從小到大排序
+     * 回傳該表格的所有資料，以 price 欄位從小到大排序
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //GET/items
-        return 'index';
+        // return 'index';
+        $items = Item::orderBy('price', 'asc')->get();
+        return $items;
     }
 
     /**
@@ -33,7 +35,7 @@ class ItemController extends Controller
     public function create()
     {
         //GET/items/create
-        //建立一筆新資料的'頁面'
+        //建立一筆新資料的'頁面'(view)
         return 'create';
 
     }
@@ -49,7 +51,9 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //POST/items
-        return 'store';
+        // return 'store';
+        $saveitem = Item::create($request->all());
+        return $saveitem;
     }
 
     /**
@@ -60,10 +64,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Item $item)
     {
         //GET/items/{item}
-        return 'show';
+        // return 'show';
+        return $item;
     }
 
     /**
