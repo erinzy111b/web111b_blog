@@ -177,3 +177,7 @@ Route::get('/bbbb', function () {
 //     //return action([SiteController::class,'demo']);
 //     return url()->current();
 // });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

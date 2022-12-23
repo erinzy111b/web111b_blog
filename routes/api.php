@@ -56,8 +56,11 @@ Route::middleware(['jwt.auth'])->group(function () {
     });
 });
 
-Route::group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers\Api'], function () {
-    Route::get('/', 'AuthController@me')->name('me');
-    Route::post('login', 'AuthController@login')->name('login');
-    Route::post('logout', 'AuthController@logout')->name('logout');
-});
+Route::group([
+    'prefix' => 'auth',
+    'namespace' => 'App\Http\Controllers\Api'],
+    function () {
+        Route::get('/', 'AuthController@me')->name('me');
+        Route::post('login', 'AuthController@login')->name('login');
+        Route::post('logout', 'AuthController@logout')->name('logout');
+    });

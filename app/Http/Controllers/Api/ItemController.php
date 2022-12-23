@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Cgy;
 use App\Models\Item;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -93,11 +94,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Item $item)
     {
         //PUT/PATCH/items/{item}
         // return 'update';
-        $num = $article->update($request->only(['subject', 'content', 'sort', 'enabled_at', 'enabled', 'cgy_id']));
+        $num = $item->update($request->only(['title', 'pic', 'price', 'desc', 'enabled_at', 'enabled', 'cgy_id']));
         return $num;
     }
 
@@ -109,58 +110,58 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
         //DELETE/items/{item}
         // return 'destroy';
-        $num = $article->delete();
+        $num = $item->delete();
         return $num;
     }
 
-    //查詢所有資料，只取 id , subject 以及 content 這三個欄位
+    //查詢所有資料，只取 id , title 以及 price 這三個欄位
     public function querySelect()
     {
-        $articles = Article::select(['id', 'subject', 'content'])->get();
-        return $articles;
+        $items = Item::select(['id', 'title', 'price'])->get();
+        return $items;
     }
 
-    //查詢上架於 2022/12/24 00:00:00 之後，enabled 為 true 的資料，按照 enabled_at 從新到舊排序，回傳第一筆資料的 subject 欄位內容
+    //查詢上架於 2022/12/24 00:00:00 之後，enabled 為 true 的資料，按照 enabled_at 從新到舊排序，回傳第一筆資料的 title 欄位內容
     public function querySpecific()
     {
         // return 'querySpecific';
-        $article = Article::where('enabled_at', '>', Carbon::createFromFormat('Y/m/d m:i:s', '2022/12/13 00:00:00'))->where('enabled', true)->orderBy('created_at', 'desc')->first();
-        return $article->subject;
+        $item = Item::where('enabled_at', '>', Carbon::createFromFormat('Y/m/d m:i:s', '2022/12/24 00:00:00'))->where('enabled', true)->orderBy('created_at', 'desc')->first();
+        return $item->title;
     }
 
     //查詢上架於 2022/12/24 00:00:00 之後，enabled 為 true 的資料，按照 enabled_at 從新到舊排序，回傳第2~4筆資料
     public function queryPagination()
     {
         // return 'queryPagination';
-        $articles = Article::where('enabled_at', '>', '2022-12-10 00:00:00')->where('enabled', true)->orderBy('created_at', 'desc')->skip(1)->take(3)->get();
-        return $articles;
+        $items = Item::where('enabled_at', '>', '2022-12-10 00:00:00')->where('enabled', true)->orderBy('created_at', 'desc')->skip(1)->take(3)->get();
+        return $items;
     }
 
     //查詢上架日期介於 2022/12/24 00:00:00 和 2022/12/28 23:59:59 之間，price 位於 $min 到 $max 之間的資料並回傳
     public function queryRange($min, $max)
     {
         // return 'queryRange';
-        $articles = Article::where('enabled_at', '<', '2022/12/15 23:59:59')->where('enabled_at', '>', '2022/12/10 00:00:00')->whereBetween('sort', [$min, $max])->get();
-        return $articles;
+        $items = Item::where('enabled_at', '<', '2022/12/24 23:59:59')->where('enabled_at', '>', '2022/12/28 00:00:00')->whereBetween('price', [$min, $max])->get();
+        return $items;
     }
 
     //根據所傳入的分類id，取出該分類所有 enabled 為 true 的資料，依照 price 從小到大排序，回傳符合的資料
     public function queryByCgy($cgy_id)
     {
         // return 'queryByCgy';
-        $articles = Article::where('cgy_id', $cgy_id)->where('enabled', true)->orderBy('sort', 'desc')->get();
-        return $articles;
+        $items = Item::where('cgy_id', $cgy_id)->where('enabled', true)->orderBy('price', 'asc')->get();
+        return $items;
     }
 
     //試著使用 pluck() 來取得 id 為 key ， title 為 value 的陣列
     public function queryPluck()
     {
         // return 'queryPluck';
-        $data = Article::pluck('subject', 'id');
+        $data = Item::pluck('title', 'id');
         return $data;
     }
 
@@ -168,7 +169,7 @@ class ItemController extends Controller
     public function enabledCount()
     {
         // return 'enabledCount';
-        $num = Article::where('enabled', true)->count();
+        $num = Item::where('enabled', true)->count();
         return $num;
     }
 
@@ -176,39 +177,38 @@ class ItemController extends Controller
     public function queryCgyRelation(Cgy $cgy)
     {
         // return 'queryCgyRelation';
-        return $cgy->articles;
+        return $cgy->items;
     }
 
     //取得原分類ID為$old_cgy_id的第一個文章，將之改為新分類ID $new_cgy_id
     public function changeCgy($old_cgy_id, $new_cgy_id)
     {
         // return 'changeCgy';
-        $article = Article::where('cgy_id', $old_cgy_id)->first();
-        // $article->cgy_id = $new_cgy_id;
-        // $article->save();
+        $item = Item::where('cgy_id', $old_cgy_id)->first();
+        // $item->cgy_id = $new_cgy_id;
+        // $item->save();
 
         $new_cgy = Cgy::find($new_cgy_id);
-        $new_cgy->articles()->save($article);
-        return Article::find($article->id);
+        $new_cgy->items()->save($item);
+        return Item::find($item->id);
     }
 
     //取得指定商品的所屬分類
-    public function getArticleCgy(Item $article)
+    public function getArticleCgy(Item $item)
     {
         // return 'getArticleCgy';
-        return $article->cgy;
+        return $item->cgy;
     }
 
     //取得原分類 id 為$old_cgy_id的所有商品，將之改為新分類ID $new_cgy_id
     public function changeAllCgy($old_cgy_id, $new_cgy_id)
     {
         // return 'changeAllCgy';
-        $articles = Article::where('cgy_id', $old_cgy_id)->get();
+        $items = Item::where('cgy_id', $old_cgy_id)->get();
 
         $new_cgy = Cgy::find($new_cgy_id);
-        $new_cgy->articles()->saveMany($articles);
-        return $new_cgy->articles;
-        return 'changeAllCgy';
+        $new_cgy->items()->saveMany($items);
+        return $new_cgy->items;
     }
 
     // //取得指定商品的所有標籤，連同該標籤建立的時間

@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravelcollective/html": "^6.3",
+        "tcg/voyager": "^1.6",
         "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {

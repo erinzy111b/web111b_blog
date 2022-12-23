@@ -16,6 +16,11 @@ class Cgy extends Model
         return $this->hasMany(Article::class);
     }
 
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
     public function cgy()
     {
         return $this->hasOne(Cgy::class);
