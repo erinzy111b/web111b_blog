@@ -12,6 +12,8 @@
 <div class="container">
   <h1>Gallery</h1>
 
+  {!! menu('1234', 'bootstrap') !!}
+
   <div class="gallery-wrap">
     <div class="item item-1"></div>
     <div class="item item-2"></div>
